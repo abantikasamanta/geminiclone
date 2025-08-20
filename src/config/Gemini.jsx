@@ -1,7 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY);
-console.log(process.env.REACT_APP_GEMINI_API_KEY)
 
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
@@ -20,7 +19,9 @@ async function runChat(message) {
   });
 
   const result = await chat.sendMessage(message);
-  console.log(result.response.text());
+  const response = result.response.text();
+  console.log(response)
+  return response;
 }
 
 export default runChat;
