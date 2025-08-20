@@ -1,24 +1,19 @@
 import { createContext } from "react";
-import runChat from "../config/Gemini"
+import runChat from "../config/Gemini";
 
-export const Context = createContext()
-const ContextProvider = (props)=>  {
-    const onSent=   async (promt)=>{
-        await runChat(promt);
-    }
+export const Context = createContext();
+const ContextProvider = (props) => {
 
-    onSent("What is react.js")
+  const onSent = async (promt) => {
+    await runChat(promt);
+  };
+  onSent("What is react")
 
-    const contextValue = {
+  const contextValue = {};
 
-    }
+  return (
+    <Context.Provider value={contextValue}>{props.children}</Context.Provider>
+  );
+};
 
-
-    return (
-        <Context.Provider value={contextValue}>
-            {props.children}
-        </Context.Provider>
-    )
-}
-
-export default ContextProvider
+export default ContextProvider;
